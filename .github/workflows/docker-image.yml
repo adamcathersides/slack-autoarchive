@@ -15,4 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag adamcathersides/slack-autoarchive:$(date +%s)
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      run: |
+        TAG=$(date +%s)
+        docker build . --file Dockerfile --tag adamcathersides/slack-autoarchive:$TAG
+        docker login -u $DOCKER_USER -p DOCKER_TOKEN
+        docker push adamcathersides/slack-autoarchive:$TAG
