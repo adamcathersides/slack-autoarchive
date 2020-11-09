@@ -18,5 +18,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_TOKEN }}
-          repository: adamcathersides/slack-autoarchive
-          tag_with_ref: true
+          tags: |
+            adamcathersides/slack-autoarchive:latest
+            adamcathersides/slack-autoarchive:$(date +%s)
