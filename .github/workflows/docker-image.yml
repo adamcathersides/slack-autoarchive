@@ -23,3 +23,5 @@ jobs:
         docker build . --file Dockerfile --tag adamcathersides/slack-autoarchive:$TAG
         echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
         docker push adamcathersides/slack-autoarchive:$TAG
+        docker tag adamcathersides/slack-autoarchive:$TAG adamcathersides/slack-autoarchive:latest
+        docker push adamcathersides/slack-autoarchive:latest
