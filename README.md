@@ -81,3 +81,9 @@ To provide a custom message, simply edit `templates.json`.
 - if your ready to archive run
 
 `docker run -e DRY_RUN=false autoarchive`
+
+
+## Automatic build
+
+This has a github action configured which will automatically build and push the
+docker image when master is merged to.
